@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>双11红包雨效果实现 | 秦强的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="应公司产品要求，简单实现一个双11红包雨效果。，实现思路其实很简单，主要是需要了解css3的动画。下面是主要逻辑代码，简单做了下封装，以便其他业务使用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="双11红包雨效果实现">
+<meta property="og:url" content="http://yoursite.com/2018/11/08/双11红包雨效果实现/index.html">
+<meta property="og:site_name" content="秦强的博客">
+<meta property="og:description" content="应公司产品要求，简单实现一个双11红包雨效果。，实现思路其实很简单，主要是需要了解css3的动画。下面是主要逻辑代码，简单做了下封装，以便其他业务使用。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-15T14:56:18.965Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="双11红包雨效果实现">
+<meta name="twitter:description" content="应公司产品要求，简单实现一个双11红包雨效果。，实现思路其实很简单，主要是需要了解css3的动画。下面是主要逻辑代码，简单做了下封装，以便其他业务使用。">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">秦强的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">尘世迷途一小前端</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">文章</a>
+        
+          <a class="main-nav-link" href="/mood">心情</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <!-- <a id="nav-search-btn" class="nav-icon" title="搜索"></a> -->
+      </nav>
+      <div id="search-form-wrap">
+        <!-- <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form> -->
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-双11红包雨效果实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/08/双11红包雨效果实现/" class="article-date">
+  <time datetime="2018-11-08T11:53:07.000Z" itemprop="datePublished">2018-11-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      双11红包雨效果实现
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>应公司产品要求，简单实现一个双11红包雨效果。，实现思路其实很简单，主要是需要了解css3的动画。<br>下面是主要逻辑代码，简单做了下封装，以便其他业务使用。<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> createRain(opt)&#123;</span><br><span class="line">   <span class="built_in">return</span> this.init(opt);</span><br><span class="line">&#125;</span><br><span class="line">createRain.prototype.init=<span class="keyword">function</span>(opt)&#123;</span><br><span class="line">       var options=$.extend(&#123;</span><br><span class="line">           size          : 2,<span class="comment">#红包数量,默认每秒创建2个</span></span><br><span class="line">           content       : <span class="string">''</span>,<span class="comment">#内容可以是HTML</span></span><br><span class="line">           className     : <span class="string">'redPack'</span>,<span class="comment">#默认父级class</span></span><br><span class="line">           redClassName  : <span class="string">'rain-hb'</span>,<span class="comment">#默认红包class</span></span><br><span class="line">           topRange      : 100,<span class="comment">#top基数</span></span><br><span class="line">           leftRange     : 80,<span class="comment">#left基数</span></span><br><span class="line">           duration      : 15,<span class="comment">#红包雨持续时间</span></span><br><span class="line">           creatCallBack : <span class="function"><span class="title">function</span></span>()&#123;&#125;,<span class="comment">#创建红包时的回调</span></span><br><span class="line">           clickCallBack : <span class="function"><span class="title">function</span></span>()&#123;&#125;,<span class="comment">#点击红包回调</span></span><br><span class="line">           overCallBack  : <span class="function"><span class="title">function</span></span>()&#123;&#125;<span class="comment">#红包结束回调</span></span><br><span class="line"></span><br><span class="line">       &#125;,opt||&#123;&#125;);</span><br><span class="line">       var rainHtml=<span class="string">''</span>,</span><br><span class="line">           o=options,</span><br><span class="line">           rainTimers=setInterval(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">               rainHtml=<span class="string">''</span>;</span><br><span class="line">               <span class="keyword">for</span>(var i=0;i&lt;o.size;i++)&#123;</span><br><span class="line">                   var top=-Math.floor(Math.random()*o.topRange+20)+<span class="string">"%"</span>, <span class="comment">#取-20%-120%之间的随机值。</span></span><br><span class="line">                       left=Math.floor((Math.random()+0.1)*o.leftRange)+<span class="string">"%"</span>;<span class="comment">#取10%-90%之间随机值</span></span><br><span class="line">                   rainHtml+= <span class="string">'&lt;a class="'</span>+o.redClassName+<span class="string">' hb-anim" style="top:'</span>+top+<span class="string">';left:'</span>+left+<span class="string">';cursor:pointer;background-size:cover;"&gt;'</span>+o.content+<span class="string">'&lt;/a&gt;'</span>;</span><br><span class="line">               &#125;</span><br><span class="line">               $(<span class="string">"."</span>+o.className).append(rainHtml);</span><br><span class="line">               </span><br><span class="line">           &#125;,1000);</span><br><span class="line">           $(<span class="string">"."</span>+o.className).on(<span class="string">'click'</span>,<span class="string">"."</span>+o.redClassName,<span class="keyword">function</span>(e)&#123;</span><br><span class="line">               e.preventDefault();</span><br><span class="line">               $(this).hide();</span><br><span class="line">               <span class="keyword">if</span>(o.clickCallBack)&#123;</span><br><span class="line">                   o.clickCallBack();</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;);</span><br><span class="line">           <span class="keyword">if</span>(o.creatCallBack)&#123;</span><br><span class="line">               o.creatCallBack();</span><br><span class="line">           &#125;</span><br><span class="line">           var durationTimer=setTimeout(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">               clearInterval(rainTimers);</span><br><span class="line">               clearTimeout(durationTimer);</span><br><span class="line">               <span class="keyword">if</span>(o.overCallBack)&#123;</span><br><span class="line">                   o.overCallBack();</span><br><span class="line">                   </span><br><span class="line">               &#125;</span><br><span class="line">           &#125;,o.duration*1000);</span><br><span class="line"> </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>1.直接调用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var redRain=new createRain()</span><br></pre></td></tr></table></figure></p>
+<p>2.可以自己配置参数<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var redRain=new createRain(&#123;</span><br><span class="line">size:10</span><br><span class="line">duration:60000,</span><br><span class="line">creatCallBack : <span class="function"><span class="title">function</span></span>()&#123;//创建红包时的回调</span><br><span class="line"></span><br><span class="line">&#125;,</span><br><span class="line">clickCallBack : <span class="function"><span class="title">function</span></span>()&#123;//点击红包回调</span><br><span class="line"></span><br><span class="line">&#125;,</span><br><span class="line">overCallBack : <span class="function"><span class="title">function</span></span>()&#123;//红包动画结束回调</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="我承认自己很菜，但是我不能不努力。"><a href="#我承认自己很菜，但是我不能不努力。" class="headerlink" title="我承认自己很菜，但是我不能不努力。"></a>我承认自己很菜，但是我不能不努力。</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/08/双11红包雨效果实现/" data-id="cjy7g15zr0003f21vca8vw32g" class="article-share-link">分享</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/04/08/js算法中reduce思想的应用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          js算法中reduce思想的应用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/04/07/javascript中闭包的深入理解/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">javascript中闭包的深入理解</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/06/15/微信小程序踩坑/">微信小程序踩坑</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/20/关于Mock.js的正确使用/">关于Mock.js的正确使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/08/js算法中reduce思想的应用/">js算法中reduce思想的应用</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/08/双11红包雨效果实现/">双11红包雨效果实现</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/07/javascript中闭包的深入理解/">javascript中闭包的深入理解</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 qinqiang<br>
+      github <a href="https://www.github.com/qinqiang888" target="_blank">访问GitHub</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">文章</a>
+  
+    <a href="/mood" class="mobile-nav-link">心情</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> -->
+<script typet="text/javascript" src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

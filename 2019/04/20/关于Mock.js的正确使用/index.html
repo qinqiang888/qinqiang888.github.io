@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>关于Mock.js的正确使用 | 秦强的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="背景最近在一个vue项目中需要使用mockjs模拟数据,研究了下用法。网上看到的资料没有找到开发环境下动态配置Mock数据的，不适合真正去运用到项目中，我是通动态配置的引入,感觉是一种比较便捷的使用方式。简单做个记录和分享，不喜勿喷。    Mock.js是干嘛用的？Mock.js 是一款模拟数据生成器，旨在帮助前端攻城师独立于后端进行开发，帮助编写单元测试。提供了以下模拟功能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Mock.js的正确使用">
+<meta property="og:url" content="http://yoursite.com/2019/04/20/关于Mock.js的正确使用/index.html">
+<meta property="og:site_name" content="秦强的博客">
+<meta property="og:description" content="背景最近在一个vue项目中需要使用mockjs模拟数据,研究了下用法。网上看到的资料没有找到开发环境下动态配置Mock数据的，不适合真正去运用到项目中，我是通动态配置的引入,感觉是一种比较便捷的使用方式。简单做个记录和分享，不喜勿喷。    Mock.js是干嘛用的？Mock.js 是一款模拟数据生成器，旨在帮助前端攻城师独立于后端进行开发，帮助编写单元测试。提供了以下模拟功能">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-25T02:31:27.522Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于Mock.js的正确使用">
+<meta name="twitter:description" content="背景最近在一个vue项目中需要使用mockjs模拟数据,研究了下用法。网上看到的资料没有找到开发环境下动态配置Mock数据的，不适合真正去运用到项目中，我是通动态配置的引入,感觉是一种比较便捷的使用方式。简单做个记录和分享，不喜勿喷。    Mock.js是干嘛用的？Mock.js 是一款模拟数据生成器，旨在帮助前端攻城师独立于后端进行开发，帮助编写单元测试。提供了以下模拟功能">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">秦强的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">尘世迷途一小前端</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">文章</a>
+        
+          <a class="main-nav-link" href="/mood">心情</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <!-- <a id="nav-search-btn" class="nav-icon" title="搜索"></a> -->
+      </nav>
+      <div id="search-form-wrap">
+        <!-- <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form> -->
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-关于Mock.js的正确使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/20/关于Mock.js的正确使用/" class="article-date">
+  <time datetime="2019-04-20T05:42:56.000Z" itemprop="datePublished">2019-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于Mock.js的正确使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>最近在一个vue项目中需要使用mockjs模拟数据,研究了下用法。网上看到的资料没有找到开发环境下动态配置Mock数据的，不适合真正去运用到项目中，我是通动态配置的引入,感觉是一种比较便捷的使用方式。简单做个记录和分享，不喜勿喷。   </p>
+<h3 id="Mock-js是干嘛用的？"><a href="#Mock-js是干嘛用的？" class="headerlink" title="Mock.js是干嘛用的？"></a>Mock.js是干嘛用的？</h3><p>Mock.js 是一款模拟数据生成器，旨在帮助前端攻城师独立于后端进行开发，帮助编写单元测试。提供了以下模拟功能<br>   <a id="more"></a><br>1.根据数据模板生成模拟数据<br>2.模拟 Ajax 请求，生成并返回模拟数据<br>3.基于 HTML 模板生成模拟数据   </p>
+<p>上面这是官网的说法，事实上它主要是用来拦截ajax请求的。原理是在发送请求之前，把XHR对象给改了，改为mock自己封装的XHR对象方法，只要匹配到对应请求地址，就走自己封装的方法，从而就会去找本地相对路径下对应url的数据。</p>
+<h3 id="vue中开发环境动态配置Mockjs"><a href="#vue中开发环境动态配置Mockjs" class="headerlink" title="vue中开发环境动态配置Mockjs"></a>vue中开发环境动态配置Mockjs</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install mockjs</span><br></pre></td></tr></table></figure>
+<h4 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const Mock = require(<span class="string">'mockjs'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="建立本地mock数据"><a href="#建立本地mock数据" class="headerlink" title="建立本地mock数据"></a>建立本地mock数据</h4><p>根目录新建一个mock.js(这个名字随便起)，你也可以在建在别的目录，只要能引就行。<br>mock.js主要代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">const Mock = require(<span class="string">'mockjs'</span>)</span><br><span class="line">const Random = Mock.Random</span><br><span class="line">const baseURL=process.env.BASE_URL <span class="comment">#process.env是node环境变量,development环境下本地开发环境下自己配的BASE_URL地址,即:开发环境的接口域名</span></span><br><span class="line">Mock.setup(&#123;</span><br><span class="line">  timeout: 20  <span class="comment"># 模拟接口延时</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment"># 然后我要把模拟的数据写出来</span></span><br><span class="line">const userList = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    <span class="built_in">let</span> Users = []</span><br><span class="line">    <span class="built_in">let</span> <span class="built_in">type</span> = [<span class="string">'游客'</span>, <span class="string">'会员'</span>, <span class="string">'管理员'</span>]</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">let</span> i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">        <span class="built_in">let</span> obj = Mock.mock(&#123;</span><br><span class="line">            userId: i + 1,</span><br><span class="line">            userName: Random.cname(),</span><br><span class="line">            userEmail: Random.email(),</span><br><span class="line">            <span class="string">'userType|+1'</span>: <span class="built_in">type</span></span><br><span class="line">        &#125;)</span><br><span class="line">    Users.push(obj)</span><br><span class="line">&#125;</span><br><span class="line">    <span class="built_in">return</span> Users </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const articleDetail = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    <span class="built_in">let</span> obj = &#123;&#125;</span><br><span class="line">    obj.author_name = Random.cname()</span><br><span class="line">    obj.title = Random.csentence(5, 30)</span><br><span class="line">    obj.publish_date = Random.date()</span><br><span class="line">    obj.content = Random.paragraph(100)</span><br><span class="line">    obj.view = Random.integer(0, 10000)</span><br><span class="line">    obj.source = <span class="string">'今日头条'</span></span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">        data: obj</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> mockList= [&#123;</span><br><span class="line">    url: <span class="string">"/api/userList"</span>,<span class="comment">#要模拟的接口url</span></span><br><span class="line">    data: userList,<span class="comment">#这个直接写方法就行，mock内部自己会判断来调用</span></span><br><span class="line">    isMock:<span class="literal">true</span>,<span class="comment">#这个参数很关键，区分这个接口是否还需要mock模拟,后期可能有的接口后段已经给出了，不需要模拟了，也不需要把这个方法删掉，只需要isMock改为false即可，以后接口万一需要更改，留下来随时可以模拟，不需要重新建数据。</span></span><br><span class="line">    <span class="built_in">type</span>:<span class="string">'post'</span></span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">    url: <span class="string">"/api/articleDetail"</span>,</span><br><span class="line">    data: articleDetail ,</span><br><span class="line">    isMock:<span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line">]</span><br><span class="line"><span class="comment"># 关键一步   </span></span><br><span class="line"><span class="comment"># 通过Mock.mock()才可以拦截   </span></span><br><span class="line"><span class="comment">#将mockList中所有需要mock的数据进行mock</span></span><br><span class="line">mockList.forEach(item=&gt;&#123;</span><br><span class="line">    <span class="comment"># 把需要进行mock的请求进行mock</span></span><br><span class="line">    item.isMock &amp;&amp; Mock.mock(baseUrl + item.url, item.type || <span class="string">'post'</span>, item.data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="main-js中引入mock-js里mock好的数据"><a href="#main-js中引入mock-js里mock好的数据" class="headerlink" title="main.js中引入mock.js里mock好的数据"></a>main.js中引入mock.js里mock好的数据</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#只在开发环境引入</span></span><br><span class="line">process.env.NODE_ENV === <span class="string">'development'</span> &amp;&amp; require(<span class="string">'./mock.js'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="测试一下"><a href="#测试一下" class="headerlink" title="测试一下"></a>测试一下</h4><p>在userlist.vue中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">axios.post(<span class="string">'/api/userList'</span>, &#123;&#125;).<span class="keyword">then</span>((res)=&gt;&#123;</span><br><span class="line">    console.log(res)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">#没问题，拿到本地mock的数据。接口没有请求</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="完事"><a href="#完事" class="headerlink" title="完事"></a>完事</h3><p>关于Mock.js语法规则的使用，参考<a href="https://github.com/nuysoft/Mock/wiki/Syntax-Specification" target="_blank" rel="noopener">官方语法规范</a></p>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>由于mock默认拷贝了一份原生XHR,默认值withCredentials为false。对于跨域请求，是不携带cookie的，如果需要携带cookie,你应该设置了withCredentials:true，但是引入mock之后，你的设置被mock默认的那份给覆盖，需要对应的修改mock自己复制了的那一份原生XHR中的withCredentials:true<br>mock本身setup只能设置timeout,我给作者提过这个issues,希望setup也可以设置withCredentials，但遗憾的是一直没有得到回复。<br>我们只能自己主动去改，<br>其实也很简单，直接改他封装好的Mock.XHR,就一句话就可以<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const Mock = require(<span class="string">'mockjs'</span>)</span><br><span class="line">Mock.XHR.prototype.withCredentials = <span class="literal">true</span> <span class="comment">#加上这句即可</span></span><br><span class="line"><span class="comment"># ·······</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/20/关于Mock.js的正确使用/" data-id="cjy7g15zt0006f21v3ttzzdrf" class="article-share-link">分享</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/06/15/微信小程序踩坑/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          微信小程序踩坑
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/04/08/js算法中reduce思想的应用/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">js算法中reduce思想的应用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/06/15/微信小程序踩坑/">微信小程序踩坑</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/20/关于Mock.js的正确使用/">关于Mock.js的正确使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/08/js算法中reduce思想的应用/">js算法中reduce思想的应用</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/08/双11红包雨效果实现/">双11红包雨效果实现</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/07/javascript中闭包的深入理解/">javascript中闭包的深入理解</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 qinqiang<br>
+      github <a href="https://www.github.com/qinqiang888" target="_blank">访问GitHub</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">文章</a>
+  
+    <a href="/mood" class="mobile-nav-link">心情</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> -->
+<script typet="text/javascript" src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

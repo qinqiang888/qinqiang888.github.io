@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>href=&#34;xxx(this);&#34;和onclick=&#34;xxx(this); | 秦强的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="对于href=”Javascript:xxx(this);”和onclick=”javascript:xxx(this);”之前一直以为这两种写法是等同的，今天后台一个同事在项目遇到这个问题中问我时才发现前者的this根本拿不到触发事件的A标签，而后者可以拿到。 问题由来： 她原来的写法是这样的：1234567891011jsp页面:&amp;lt;table&amp;gt;&amp;lt;td&amp;gt;&amp;lt;a hre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="href=&quot;xxx(this);&quot;和onclick=&quot;xxx(this);">
+<meta property="og:url" content="http://yoursite.com/2017/07/12/2017-07-12/index.html">
+<meta property="og:site_name" content="秦强的博客">
+<meta property="og:description" content="对于href=”Javascript:xxx(this);”和onclick=”javascript:xxx(this);”之前一直以为这两种写法是等同的，今天后台一个同事在项目遇到这个问题中问我时才发现前者的this根本拿不到触发事件的A标签，而后者可以拿到。 问题由来： 她原来的写法是这样的：1234567891011jsp页面:&amp;lt;table&amp;gt;&amp;lt;td&amp;gt;&amp;lt;a hre">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/.com//img/640.jpg">
+<meta property="og:updated_time" content="2019-07-15T02:38:31.687Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="href=&quot;xxx(this);&quot;和onclick=&quot;xxx(this);">
+<meta name="twitter:description" content="对于href=”Javascript:xxx(this);”和onclick=”javascript:xxx(this);”之前一直以为这两种写法是等同的，今天后台一个同事在项目遇到这个问题中问我时才发现前者的this根本拿不到触发事件的A标签，而后者可以拿到。 问题由来： 她原来的写法是这样的：1234567891011jsp页面:&amp;lt;table&amp;gt;&amp;lt;td&amp;gt;&amp;lt;a hre">
+<meta name="twitter:image" content="http://yoursite.com/.com//img/640.jpg">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">秦强的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">尘世迷途一小前端</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">文章</a>
+        
+          <a class="main-nav-link" href="/mood">心情</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <!-- <a id="nav-search-btn" class="nav-icon" title="搜索"></a> -->
+      </nav>
+      <div id="search-form-wrap">
+        <!-- <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form> -->
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2017-07-12" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/12/2017-07-12/" class="article-date">
+  <time datetime="2017-07-12T12:53:22.000Z" itemprop="datePublished">2017-07-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      href=&#34;xxx(this);&#34;和onclick=&#34;xxx(this);
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对于href=”Javascript:xxx(this);”和onclick=”javascript:xxx(this);”之前一直以为这两种写法是等同的，今天后台一个同事在项目遇到这个问题中问我时才发现前者的this根本拿不到触发事件的A标签，而后者可以拿到。</p>
+<p>问题由来：</p>
+<p>她原来的写法是这样的：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">jsp页面:</span><br><span class="line">&lt;table&gt;</span><br><span class="line">&lt;td&gt;&lt;a href=<span class="string">"javascript:delete_cur(this)"</span>&gt;删除&lt;/a&gt;&lt;/td&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">javascript:</span><br><span class="line"><span class="keyword">function</span> delete_cur(arg)&#123;</span><br><span class="line">  console.log(arg) <span class="comment"># window</span></span><br><span class="line">  $(arg).parent().parent().remove()</span><br><span class="line">  <span class="comment">#....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>需求就是删除当前这一行：结果发现删不掉。代码没有任何报错；于是控制台打印出argument<br>为什么是window?后来一想href等同于js中window.location.href，恰好是属于window对象。被调用的函数被当成是一个地址，this只能指向顶层window对象。<br>改为这个为什么就可以了：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;table&gt;</span><br><span class="line">&lt;td&gt;&lt;a onclick=<span class="string">"javascript:delete_cur(this)"</span>&gt;删除&lt;/a&gt;&lt;/td&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure></p>
+<p><img src="/.com//img/640.jpg" alt="img"><br><!-- <img src="img/640.jpg"/> --><br>事实上当onclick=”javascript:delete_cur(this)”执行的时候，浏览器解释器会给它自动包装成一个匿名函数，也就是:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">document.getElmentsByClassName(<span class="string">"a"</span>)[0].onclick = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">  console.log(this) <span class="comment"># 此时为当前a标签</span></span><br><span class="line">  delete_cur(this)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>看似简单，但却很有深意，有了新的一些认识。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/07/12/2017-07-12/" data-id="cjy7g15zo0001f21va3nn4t5j" class="article-share-link">分享</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/13/javascript中最重要的三点/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          javascript中领悟到的重要三点
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/06/15/微信小程序踩坑/">微信小程序踩坑</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/20/关于Mock.js的正确使用/">关于Mock.js的正确使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/08/js算法中reduce思想的应用/">js算法中reduce思想的应用</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/08/双11红包雨效果实现/">双11红包雨效果实现</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/07/javascript中闭包的深入理解/">javascript中闭包的深入理解</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 qinqiang<br>
+      github <a href="https://www.github.com/qinqiang888" target="_blank">访问GitHub</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">文章</a>
+  
+    <a href="/mood" class="mobile-nav-link">心情</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> -->
+<script typet="text/javascript" src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
