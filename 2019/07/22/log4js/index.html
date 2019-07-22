@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>log4js日志管理 | 秦强的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="背景之前使用koa写了一个服务接口。目前要加一个日志管理。网上看了看，log4js使用频率较高，就选了这个来进行日志管理。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="log4js日志管理">
+<meta property="og:url" content="http://yoursite.com/2019/07/22/log4js/index.html">
+<meta property="og:site_name" content="秦强的博客">
+<meta property="og:description" content="背景之前使用koa写了一个服务接口。目前要加一个日志管理。网上看了看，log4js使用频率较高，就选了这个来进行日志管理。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-22T07:51:31.112Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="log4js日志管理">
+<meta name="twitter:description" content="背景之前使用koa写了一个服务接口。目前要加一个日志管理。网上看了看，log4js使用频率较高，就选了这个来进行日志管理。">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">秦强的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">尘世迷途一小前端</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">文章</a>
+        
+          <a class="main-nav-link" href="/mood">心情</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <!-- <a id="nav-search-btn" class="nav-icon" title="搜索"></a> -->
+      </nav>
+      <div id="search-form-wrap">
+        <!-- <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form> -->
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-log4js" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/22/log4js/" class="article-date">
+  <time datetime="2019-07-22T07:30:01.000Z" itemprop="datePublished">2019-07-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      log4js日志管理
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>之前使用koa写了一个服务接口。目前要加一个日志管理。网上看了看，log4js使用频率较高，就选了这个来进行日志管理。<br><a id="more"></a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm intall log4js --save</span><br></pre></td></tr></table></figure>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>根目录新建logger.js，目前我是分了两种类型：请求日志和响应日志分开。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> log4js = <span class="built_in">require</span>(<span class="string">'log4js'</span>)</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line">log4js.configure(&#123;</span><br><span class="line">  appenders: &#123;</span><br><span class="line">    request: &#123; <span class="comment">//访问日志</span></span><br><span class="line">      type: <span class="string">'file'</span>,<span class="comment">//文件类型</span></span><br><span class="line">      filename: path.join(<span class="string">'logs/'</span>, <span class="string">'request.log'</span>), <span class="comment">//输出到目录并指定文件名</span></span><br><span class="line">      maxLogSize: <span class="number">10485760</span>,<span class="comment">//最大10M</span></span><br><span class="line">      backups: <span class="number">20</span>, <span class="comment">//保留最近的20个文件</span></span><br><span class="line">      alwaysIncludePattern: <span class="literal">true</span>, <span class="comment">//使用配置的patter格式</span></span><br><span class="line">      pattern: <span class="string">'yyyy-MM-dd.log'</span>, <span class="comment">//文件名格式</span></span><br><span class="line">      compress: <span class="literal">true</span> <span class="comment">//超过限制，自动压缩</span></span><br><span class="line">    &#125;,</span><br><span class="line">    response: &#123; <span class="comment">//响应日志</span></span><br><span class="line">      type: <span class="string">'file'</span>,</span><br><span class="line">      filename: path.join(<span class="string">'logs/'</span>, <span class="string">'response.log'</span>), </span><br><span class="line">      maxLogSize: <span class="number">10485760</span>, </span><br><span class="line">      backups: <span class="number">20</span>,</span><br><span class="line">      alwaysIncludePattern: <span class="literal">true</span>,</span><br><span class="line">      pattern: <span class="string">'yyyy-MM-dd.log'</span>, </span><br><span class="line">      compress: <span class="literal">true</span> </span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="built_in">console</span>: &#123;</span><br><span class="line">      type: <span class="string">'console'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  categories: &#123;</span><br><span class="line">    <span class="keyword">default</span>: &#123; <span class="attr">appenders</span>: [<span class="string">'console'</span>], <span class="attr">level</span>: <span class="string">'info'</span> &#125;, <span class="comment">//默认级别info </span></span><br><span class="line">    request: &#123; <span class="attr">appenders</span>: [<span class="string">'request'</span>], <span class="attr">level</span>: <span class="string">'info'</span> &#125;,<span class="comment">//默认级别info </span></span><br><span class="line">    response: &#123; <span class="attr">appenders</span>: [<span class="string">'response'</span>], <span class="attr">level</span>: <span class="string">'info'</span> &#125;<span class="comment">//默认级别info </span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">exports.requestlog = log4js.getLogger(<span class="string">'request'</span>)</span><br><span class="line">exports.responselog = log4js.getLogger(<span class="string">'response'</span>)</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; requestlog, responselog &#125; = <span class="built_in">require</span>(<span class="string">'../logger'</span>)</span><br><span class="line">requestlog.info(<span class="string">'请求日志'</span>)</span><br><span class="line">responselog.info(<span class="string">'响应日志'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>对log4js配置还不是很熟悉，还需要继续研究。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/22/log4js/" data-id="cjye3d8kn0002ixu0cuvilv2n" class="article-share-link">分享</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/15/微信小程序踩坑/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">微信小程序踩坑</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/22/log4js/">log4js日志管理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/15/微信小程序踩坑/">微信小程序踩坑</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/20/关于Mock.js的正确使用/">关于Mock.js的正确使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/08/js算法中reduce思想的应用/">js算法中reduce思想的应用</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/24/lvyou/">旅游</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 qinqiang<br>
+      github <a href="https://www.github.com/qinqiang888" target="_blank">访问GitHub</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">文章</a>
+  
+    <a href="/mood" class="mobile-nav-link">心情</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> -->
+<script typet="text/javascript" src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
