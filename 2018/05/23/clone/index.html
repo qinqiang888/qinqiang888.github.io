@@ -5,18 +5,19 @@
   
 
   
-  <title>秦强的博客</title>
+  <title>js对象深拷贝和浅拷贝 | 秦强的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前端 博客 javascript">
-<meta property="og:type" content="website">
-<meta property="og:title" content="秦强的博客">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+  <meta name="description" content="数据类型javascript中对象为引用类型，其值存储在堆内存中， 深拷贝就是将重新开辟一块新的堆内存来赋值 浅拷贝1234var obj=&amp;#123;name:&apos;张三&apos;&amp;#125;;var newObj=objnewObj.name=&apos;李四&apos;console.log(obj)//李四  newObj改变，obj也跟着改变 。因为二者指向同一个地址 深拷贝1234 var obj=&amp;#123;na">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js对象深拷贝和浅拷贝">
+<meta property="og:url" content="http://yoursite.com/2018/05/23/clone/index.html">
 <meta property="og:site_name" content="秦强的博客">
-<meta property="og:description" content="前端 博客 javascript">
+<meta property="og:description" content="数据类型javascript中对象为引用类型，其值存储在堆内存中， 深拷贝就是将重新开辟一块新的堆内存来赋值 浅拷贝1234var obj=&amp;#123;name:&apos;张三&apos;&amp;#125;;var newObj=objnewObj.name=&apos;李四&apos;console.log(obj)//李四  newObj改变，obj也跟着改变 。因为二者指向同一个地址 深拷贝1234 var obj=&amp;#123;na">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-23T14:18:53.631Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="秦强的博客">
-<meta name="twitter:description" content="前端 博客 javascript">
+<meta name="twitter:title" content="js对象深拷贝和浅拷贝">
+<meta name="twitter:description" content="数据类型javascript中对象为引用类型，其值存储在堆内存中， 深拷贝就是将重新开辟一块新的堆内存来赋值 浅拷贝1234var obj=&amp;#123;name:&apos;张三&apos;&amp;#125;;var newObj=objnewObj.name=&apos;李四&apos;console.log(obj)//李四  newObj改变，obj也跟着改变 。因为二者指向同一个地址 深拷贝1234 var obj=&amp;#123;na">
   
   
     <link rel="icon" href="/favicon.png">
@@ -67,9 +68,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-clone" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-clone" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/23/clone/" class="article-date">
   <time datetime="2018-05-23T13:57:14.000Z" itemprop="datePublished">2018-05-23</time>
@@ -82,8 +81,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/23/clone/">js对象深拷贝和浅拷贝</a>
+    <h1 class="article-title" itemprop="name">
+      js对象深拷贝和浅拷贝
     </h1>
   
 
@@ -113,141 +112,28 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-javascript中闭包的深入理解" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/07/javascript中闭包的深入理解/" class="article-date">
-  <time datetime="2018-04-07T07:48:34.000Z" itemprop="datePublished">2018-04-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2018/09/03/vue/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
+          vue源码阅读之编程思想
+        
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/07/javascript中闭包的深入理解/">javascript中闭包的深入理解</a>
-    </h1>
   
+    <a href="/2018/04/07/javascript中闭包的深入理解/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">javascript中闭包的深入理解</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>作为面试必问的问题,对闭包必须进行深入研究。‘深入’二字请划重点。<br>最好是要理解到一定程度，什么程度呢？<br>就是你发现你的面试官原来对闭包的理解并不透彻，然后你为了给面试官个面子，不得不也装作一知半解的样子，这样你就牛逼了。<br>闭包学起来虽然可能对你很枯燥，但是一定要坚持,不能浮皮潦草。你要知道一个道理：水滴石穿。水能穿破坚硬的石头，何况是个闭包，前提是你还不比水弱。<br></p>
-        
-          <p class="article-more-link">
-            <a href="/2018/04/07/javascript中闭包的深入理解/#more">查看更多</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/07/javascript中闭包的深入理解/" data-id="cjyfxbp4v000aww1v053doudz" class="article-share-link">分享</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-javascript中最重要的三点" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/13/javascript中最重要的三点/" class="article-date">
-  <time datetime="2017-07-13T13:48:28.000Z" itemprop="datePublished">2017-07-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/13/javascript中最重要的三点/">javascript中领悟到的重要三点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="1-封装"><a href="#1-封装" class="headerlink" title="1.封装"></a>1.封装</h1><h1 id="2-继承"><a href="#2-继承" class="headerlink" title="2.继承"></a>2.继承</h1><h1 id="3-多态"><a href="#3-多态" class="headerlink" title="3.多态"></a>3.多态</h1><h3 id="1-1-封装（单例模式）"><a href="#1-1-封装（单例模式）" class="headerlink" title="1.1 封装（单例模式）"></a>1.1 封装（单例模式）</h3>
-        
-          <p class="article-more-link">
-            <a href="/2017/07/13/javascript中最重要的三点/#more">查看更多</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/13/javascript中最重要的三点/" data-id="cjyfxbp4n0002ww1vfnpqygsa" class="article-share-link">分享</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2017-07-12" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/12/2017-07-12/" class="article-date">
-  <time datetime="2017-07-12T12:53:22.000Z" itemprop="datePublished">2017-07-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/12/2017-07-12/">href=&#34;xxx(this);&#34;和onclick=&#34;xxx(this);</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>对于href=”Javascript:xxx(this);”和onclick=”javascript:xxx(this);”之前一直以为这两种写法是等同的，今天后台一个同事在项目遇到这个问题中问我时才发现前者的this根本拿不到触发事件的A标签，而后者可以拿到。</p>
-<p>问题由来：</p>
-<p>她原来的写法是这样的：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">jsp页面:</span><br><span class="line">&lt;table&gt;</span><br><span class="line">&lt;td&gt;&lt;a href=<span class="string">"javascript:delete_cur(this)"</span>&gt;删除&lt;/a&gt;&lt;/td&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">javascript:</span><br><span class="line"><span class="keyword">function</span> delete_cur(arg)&#123;</span><br><span class="line">  console.log(arg) <span class="comment"># window</span></span><br><span class="line">  $(arg).parent().parent().remove()</span><br><span class="line">  <span class="comment">#....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2017/07/12/2017-07-12/#more">查看更多</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/12/2017-07-12/" data-id="cjyfxbp4h0000ww1vchhqa8y7" class="article-share-link">分享</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-  </nav>
 
 </section>
         

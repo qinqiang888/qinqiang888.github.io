@@ -5,18 +5,19 @@
   
 
   
-  <title>归档: 2019/7 | 秦强的博客</title>
+  <title>js二分查找 | 秦强的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前端 博客 javascript">
-<meta property="og:type" content="website">
-<meta property="og:title" content="秦强的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2019/07/index.html">
+  <meta name="description" content="为了适配业务，js写了个二分查找。123456789101112131415function binarySearch(items,value)&amp;#123;	var startIndex=0,	stopIndex=items.length-1,	middle=Math.floor((stopIndex+startIndex)/2);	while(items[middle]!=value &amp;amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js二分查找">
+<meta property="og:url" content="http://yoursite.com/2018/10/11/binarySearch/index.html">
 <meta property="og:site_name" content="秦强的博客">
-<meta property="og:description" content="前端 博客 javascript">
+<meta property="og:description" content="为了适配业务，js写了个二分查找。123456789101112131415function binarySearch(items,value)&amp;#123;	var startIndex=0,	stopIndex=items.length-1,	middle=Math.floor((stopIndex+startIndex)/2);	while(items[middle]!=value &amp;amp;">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-23T14:37:39.961Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="秦强的博客">
-<meta name="twitter:description" content="前端 博客 javascript">
+<meta name="twitter:title" content="js二分查找">
+<meta name="twitter:description" content="为了适配业务，js写了个二分查找。123456789101112131415function binarySearch(items,value)&amp;#123;	var startIndex=0,	stopIndex=items.length-1,	middle=Math.floor((stopIndex+startIndex)/2);	while(items[middle]!=value &amp;amp;">
   
   
     <link rel="icon" href="/favicon.png">
@@ -67,59 +68,61 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/07/22/log4js/" class="archive-article-date">
-  <time datetime="2019-07-22T07:30:01.000Z" itemprop="datePublished">2019-07-22</time>
+        <section id="main"><article id="post-binarySearch" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/11/binarySearch/" class="article-date">
+  <time datetime="2018-10-11T14:24:07.000Z" itemprop="datePublished">2018-10-11</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/22/log4js/">node日志管理-log4js</a>
+    <h1 class="article-title" itemprop="name">
+      js二分查找
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/07/20/flutter/" class="archive-article-date">
-  <time datetime="2019-07-20T14:59:17.000Z" itemprop="datePublished">2019-07-20</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/20/flutter/">flutter初探</a>
-    </h1>
-  
+        <p>为了适配业务，js写了个二分查找。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binarySearch</span>(<span class="params">items,value</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> startIndex=<span class="number">0</span>,</span><br><span class="line">	stopIndex=items.length<span class="number">-1</span>,</span><br><span class="line">	middle=<span class="built_in">Math</span>.floor((stopIndex+startIndex)/<span class="number">2</span>);</span><br><span class="line">	<span class="keyword">while</span>(items[middle]!=value &amp;&amp; startIndex&lt;stopIndex)&#123;</span><br><span class="line">		<span class="keyword">if</span>(value&lt;items[middle])&#123;</span><br><span class="line">			stopIndex=middle<span class="number">-1</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(value&gt;items[middle])&#123;</span><br><span class="line">			startIndex =middle+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		middle=<span class="built_in">Math</span>.floor((stopIndex+startIndex)/<span class="number">2</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> (items[middle]!=value) ? <span class="number">-1</span> : middle</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(binarySearch([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],<span class="number">6</span>))</span><br></pre></td></tr></table></figure></p>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/11/binarySearch/" data-id="cjyfxbp4o0003ww1v8n2b6aib" class="article-share-link">分享</a>
+      
+      
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/11/08/双11红包雨效果实现/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          双11红包雨效果实现
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/09/20/tailCall/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">递归函数尾调用优化</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         

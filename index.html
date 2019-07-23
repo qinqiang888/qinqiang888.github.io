@@ -100,7 +100,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/22/log4js/" data-id="cjyfkh3k000073vu0engltpd2" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2019/07/22/log4js/" data-id="cjyfxbp4p0004ww1vz8t2et5s" class="article-share-link">分享</a>
       
       
     </footer>
@@ -141,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/20/flutter/" data-id="cjyfkh3jq00003vu0w6asr6ks" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2019/07/20/flutter/" data-id="cjyfxbp4l0001ww1vjhr0eemv" class="article-share-link">分享</a>
       
       
     </footer>
@@ -182,7 +182,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/15/微信小程序踩坑/" data-id="cjyfkh3k6000b3vu0b6zmfifh" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2019/06/15/微信小程序踩坑/" data-id="cjyfxbp4z000cww1vwsyrokfn" class="article-share-link">分享</a>
       
       
     </footer>
@@ -224,7 +224,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/20/关于Mock.js的正确使用/" data-id="cjyfkh3k4000a3vu0j1cl2aah" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2019/04/20/关于Mock.js的正确使用/" data-id="cjyfxbp50000dww1vjh56w4bo" class="article-share-link">分享</a>
       
       
     </footer>
@@ -265,7 +265,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/08/js算法中reduce思想的应用/" data-id="cjyfkh3jz00053vu0h0qz946t" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2019/04/08/js算法中reduce思想的应用/" data-id="cjyfxbp4t0008ww1vp162m1hk" class="article-share-link">分享</a>
       
       
     </footer>
@@ -306,7 +306,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/24/lvyou/" data-id="cjyfkh3k300093vu0jr8wahfh" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/12/24/lvyou/" data-id="cjyfxbp4q0005ww1vm9do8wtx" class="article-share-link">分享</a>
       
       
     </footer>
@@ -347,7 +347,44 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/08/双11红包雨效果实现/" data-id="cjyfkh3k7000c3vu0lgkiaxwd" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/11/08/双11红包雨效果实现/" data-id="cjyfxbp4x000bww1vp7oplfvq" class="article-share-link">分享</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-binarySearch" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/11/binarySearch/" class="article-date">
+  <time datetime="2018-10-11T14:24:07.000Z" itemprop="datePublished">2018-10-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/11/binarySearch/">js二分查找</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>为了适配业务，js写了个二分查找。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binarySearch</span>(<span class="params">items,value</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> startIndex=<span class="number">0</span>,</span><br><span class="line">	stopIndex=items.length<span class="number">-1</span>,</span><br><span class="line">	middle=<span class="built_in">Math</span>.floor((stopIndex+startIndex)/<span class="number">2</span>);</span><br><span class="line">	<span class="keyword">while</span>(items[middle]!=value &amp;&amp; startIndex&lt;stopIndex)&#123;</span><br><span class="line">		<span class="keyword">if</span>(value&lt;items[middle])&#123;</span><br><span class="line">			stopIndex=middle<span class="number">-1</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(value&gt;items[middle])&#123;</span><br><span class="line">			startIndex =middle+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		middle=<span class="built_in">Math</span>.floor((stopIndex+startIndex)/<span class="number">2</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> (items[middle]!=value) ? <span class="number">-1</span> : middle</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(binarySearch([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],<span class="number">6</span>))</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/11/binarySearch/" data-id="cjyfxbp4o0003ww1v8n2b6aib" class="article-share-link">分享</a>
       
       
     </footer>
@@ -392,7 +429,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/20/tailCall/" data-id="cjyfkh3k200083vu0b5u5ejk6" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/09/20/tailCall/" data-id="cjyfxbp4r0006ww1v8bhtbcvl" class="article-share-link">分享</a>
       
       
     </footer>
@@ -402,10 +439,10 @@
 
 
   
-    <article id="post-javascript中闭包的深入理解" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-vue" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/04/07/javascript中闭包的深入理解/" class="article-date">
-  <time datetime="2018-04-07T07:48:34.000Z" itemprop="datePublished">2018-04-07</time>
+    <a href="/2018/09/03/vue/" class="article-date">
+  <time datetime="2018-09-03T01:03:32.000Z" itemprop="datePublished">2018-09-03</time>
 </a>
     
   </div>
@@ -416,7 +453,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/07/javascript中闭包的深入理解/">javascript中闭包的深入理解</a>
+      <a class="article-title" href="/2018/09/03/vue/">vue源码阅读之编程思想</a>
     </h1>
   
 
@@ -424,57 +461,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>作为面试必问的问题,对闭包必须进行深入研究。‘深入’二字请划重点。<br>最好是要理解到一定程度，什么程度呢？<br>就是你发现你的面试官原来对闭包的理解并不透彻，然后你为了给面试官个面子，不得不也装作一知半解的样子，这样你就牛逼了。<br>闭包学起来虽然可能对你很枯燥，但是一定要坚持,不能浮皮潦草。你要知道一个道理：水滴石穿。水能穿破坚硬的石头，何况是个闭包，前提是你还不比水弱。<br></p>
-        
-          <p class="article-more-link">
-            <a href="/2018/04/07/javascript中闭包的深入理解/#more">查看更多</a>
-          </p>
-        
+        <p>一个月的源码阅读，真让人头大，但是收获更大，领悟到了很多vue设计的精华，先记录以下主线流程的设计思想</p>
+<h3 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h3><p>在源码目录在src/core/instance/index.js 中。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Vue</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp;</span><br><span class="line">    !(<span class="keyword">this</span> <span class="keyword">instanceof</span> Vue)</span><br><span class="line">  ) &#123;</span><br><span class="line">    warn(<span class="string">'Vue is a constructor and should be called with the `new` keyword'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>._init(options)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这段代码可以说明 Vue 只能通过 new 关键字去初始化，然后会调用this._init方法， 该方法在 src/core/instance/init.js 中定义。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype._init = <span class="function"><span class="keyword">function</span> (<span class="params">options?: Object</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> vm: Component = <span class="keyword">this</span></span><br><span class="line">  <span class="comment">// a uid</span></span><br><span class="line">  vm._uid = uid++</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> startTag, endTag</span><br><span class="line">  <span class="comment">/* istanbul ignore if */</span></span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp; config.performance &amp;&amp; mark) &#123;</span><br><span class="line">    startTag = <span class="string">`vue-perf-start:<span class="subst">$&#123;vm._uid&#125;</span>`</span></span><br><span class="line">    endTag = <span class="string">`vue-perf-end:<span class="subst">$&#123;vm._uid&#125;</span>`</span></span><br><span class="line">    mark(startTag)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// a flag to avoid this being observed</span></span><br><span class="line">  vm._isVue = <span class="literal">true</span></span><br><span class="line">  <span class="comment">// merge options</span></span><br><span class="line">  <span class="keyword">if</span> (options &amp;&amp; options._isComponent) &#123;</span><br><span class="line">    <span class="comment">// optimize internal component instantiation</span></span><br><span class="line">    <span class="comment">// since dynamic options merging is pretty slow, and none of the</span></span><br><span class="line">    <span class="comment">// internal component options needs special treatment.</span></span><br><span class="line">    initInternalComponent(vm, options)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    vm.$options = mergeOptions(</span><br><span class="line">      resolveConstructorOptions(vm.constructor),</span><br><span class="line">      options || &#123;&#125;,</span><br><span class="line">      vm</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/* istanbul ignore else */</span></span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span>) &#123;</span><br><span class="line">    initProxy(vm)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    vm._renderProxy = vm</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// expose real self</span></span><br><span class="line">  vm._self = vm</span><br><span class="line">  initLifecycle(vm)</span><br><span class="line">  initEvents(vm)</span><br><span class="line">  initRender(vm)</span><br><span class="line">  callHook(vm, <span class="string">'beforeCreate'</span>)</span><br><span class="line">  initInjections(vm) <span class="comment">// resolve injections before data/props</span></span><br><span class="line">  initState(vm)</span><br><span class="line">  initProvide(vm) <span class="comment">// resolve provide after data/props</span></span><br><span class="line">  callHook(vm, <span class="string">'created'</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* istanbul ignore if */</span></span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp; config.performance &amp;&amp; mark) &#123;</span><br><span class="line">    vm._name = formatComponentName(vm, <span class="literal">false</span>)</span><br><span class="line">    mark(endTag)</span><br><span class="line">    measure(<span class="string">`vue <span class="subst">$&#123;vm._name&#125;</span> init`</span>, startTag, endTag)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (vm.$options.el) &#123;</span><br><span class="line">    vm.$mount(vm.$options.el)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这段是vue初始化代码<br>Vue 初始化主要就干了几件事情，合并了配置，初始化生命周期，初始化事件，初始化渲染，初始化data、props、computed、watcher 等等。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Vue的初始化逻辑写的非常清楚，把不同的功能逻辑拆成一个个单独的函数执行，让主线逻辑一目了然，这样的编程思想真是非常值得借鉴和学习的。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/07/javascript中闭包的深入理解/" data-id="cjyfkh3jz00063vu0ehzv2d9k" class="article-share-link">分享</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-javascript中最重要的三点" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/13/javascript中最重要的三点/" class="article-date">
-  <time datetime="2017-07-13T13:48:28.000Z" itemprop="datePublished">2017-07-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/13/javascript中最重要的三点/">javascript中领悟到的重要三点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="1-封装"><a href="#1-封装" class="headerlink" title="1.封装"></a>1.封装</h1><h1 id="2-继承"><a href="#2-继承" class="headerlink" title="2.继承"></a>2.继承</h1><h1 id="3-多态"><a href="#3-多态" class="headerlink" title="3.多态"></a>3.多态</h1><h3 id="1-1-封装（单例模式）"><a href="#1-1-封装（单例模式）" class="headerlink" title="1.1 封装（单例模式）"></a>1.1 封装（单例模式）</h3>
-        
-          <p class="article-more-link">
-            <a href="/2017/07/13/javascript中最重要的三点/#more">查看更多</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/13/javascript中最重要的三点/" data-id="cjyfkh3jy00043vu07xvosbaz" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/09/03/vue/" data-id="cjyfxbp4u0009ww1v41gqqlwn" class="article-share-link">分享</a>
       
       
     </footer>
@@ -507,7 +503,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul>
     </div>
   </div>
 
