@@ -100,7 +100,54 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/22/log4js/" data-id="cjye6diia0003afu0dcn46dz8" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2019/07/22/log4js/" data-id="cjyfkg2qf00091bu03w1jj5tc" class="article-share-link">分享</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-flutter" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/20/flutter/" class="article-date">
+  <time datetime="2019-07-20T14:59:17.000Z" itemprop="datePublished">2019-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/20/flutter/">flutter初探</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="何为Flutter"><a href="#何为Flutter" class="headerlink" title="何为Flutter?"></a>何为Flutter?</h3><p>Flutter是谷歌的移动UI框架，可以快速在iOS和Android上构建高质量的原生用户界面。 Flutter可以与现有的代码一起工作。在全世界，Flutter正在被越来越多的开发者和组织使用，并且Flutter是完全免费、开源的。<br>光看这简短的一段话就热血澎湃的感觉:<br>1.谷歌的<br>2.跨平台<br>3.免费、开源<br>于是就决定去一探究竟</p>
+<h3 id="一波三折"><a href="#一波三折" class="headerlink" title="一波三折"></a>一波三折</h3><p>本以为很简单，结果比想象中的难多了，搭建开发环境就浪费了大半天时间。我按照官网的步骤来的，主要是因为安装各种SDK浪费时间（我安装的是iphone模拟器）</p>
+<h3 id="下载Flutter"><a href="#下载Flutter" class="headerlink" title="下载Flutter"></a>下载Flutter</h3><p><a href="https://flutter.dev/docs/development/tools/sdk/releases?tab=macos#macos" target="_blank" rel="noopener">跳转下载页面</a></p>
+<h3 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h3><p>1.vim ~/.bash_profile<br>2.加入以下三行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 国内用户最好设置这两行</span></span><br><span class="line"><span class="built_in">export</span> FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn</span><br><span class="line"><span class="built_in">export</span> PUB_HOSTED_URL=https://pub.flutter-io.cn</span><br><span class="line"><span class="comment"># Flutter SDK位置 ,这个位置根据自己的Flutter的bin文件夹目录来就行</span></span><br><span class="line"><span class="built_in">export</span> PATH=/Users/qiangqin/flutter/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure></p>
+<p>3.source ~/.bash_profile（需要重新运行，环境变量才会生效）</p>
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter doctor</span><br></pre></td></tr></table></figure>
+<h3 id="安装ios模拟"><a href="#安装ios模拟" class="headerlink" title="安装ios模拟"></a>安装ios模拟</h3><p>1.安装 homebrew （如果已经安装了brew,跳过此步骤）.<br>2.打开终端并运行这些命令来安装用于将Flutter应用安装到iOS设备的工具<br>下面这几行需要耐心等待，我花了两个多小时。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">brew install --HEAD libimobiledevice</span><br><span class="line">brew install ideviceinstaller</span><br><span class="line">brew install ios-deploy</span><br><span class="line">brew install cocoapods</span><br><span class="line">pod setup</span><br></pre></td></tr></table></figure></p>
+<h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter create my_app</span><br></pre></td></tr></table></figure>
+<h3 id="vscode编辑器"><a href="#vscode编辑器" class="headerlink" title="vscode编辑器"></a>vscode编辑器</h3><p>我是用的vscode编辑器，比较轻量级。<br>1.打开软件扩展:搜索flutter<br>2.安装之后重新启动vscode<br>3.打开创建好的项目(my_app)<br>4.点调试或者按F5 ，选择ios模拟器，进入调试状态。</p>
+<h3 id="开始flutter生涯"><a href="#开始flutter生涯" class="headerlink" title="开始flutter生涯"></a>开始flutter生涯</h3><p>1.学习FLutter api<br>2.学习dart语言</p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>目前在写一个app,边研究边写ing….</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/20/flutter/" data-id="cjyfkg2q600011bu0q645y74f" class="article-share-link">分享</a>
       
       
     </footer>
@@ -141,7 +188,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/15/微信小程序踩坑/" data-id="cjye6diie0007afu0jz6sxkxf" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2019/06/15/微信小程序踩坑/" data-id="cjyfkg2qj000c1bu0krgf280c" class="article-share-link">分享</a>
       
       
     </footer>
@@ -183,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/20/关于Mock.js的正确使用/" data-id="cjye6diid0006afu0vbpllwg4" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2019/04/20/关于Mock.js的正确使用/" data-id="cjyfkg2ql000e1bu00878shp5" class="article-share-link">分享</a>
       
       
     </footer>
@@ -224,7 +271,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/08/js算法中reduce思想的应用/" data-id="cjye6diih000aafu0b0l2bya7" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2019/04/08/js算法中reduce思想的应用/" data-id="cjyfkg2qg000a1bu0ocr522bb" class="article-share-link">分享</a>
       
       
     </footer>
@@ -265,7 +312,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/24/lvyou/" data-id="cjye6diif0008afu0ue4d56qh" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/12/24/lvyou/" data-id="cjyfkg2qd00071bu0a3xultju" class="article-share-link">分享</a>
       
       
     </footer>
@@ -306,7 +353,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/08/双11红包雨效果实现/" data-id="cjye6diig0009afu06021oeyi" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/11/08/双11红包雨效果实现/" data-id="cjyfkg2qk000d1bu0fqjr1wlx" class="article-share-link">分享</a>
       
       
     </footer>
@@ -351,7 +398,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/20/tailCall/" data-id="cjye6diic0005afu0a2xsri6h" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/09/20/tailCall/" data-id="cjyfkg2qh000b1bu0v7o0j8kh" class="article-share-link">分享</a>
       
       
     </footer>
@@ -392,7 +439,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/07/javascript中闭包的深入理解/" data-id="cjye6diib0004afu0w6jr1g46" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/04/07/javascript中闭包的深入理解/" data-id="cjyfkg2qa00051bu0d6p6vurd" class="article-share-link">分享</a>
       
       
     </footer>
@@ -433,50 +480,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/13/javascript中最重要的三点/" data-id="cjye6dii80002afu00sg5i007" class="article-share-link">分享</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2017-07-12" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/12/2017-07-12/" class="article-date">
-  <time datetime="2017-07-12T12:53:22.000Z" itemprop="datePublished">2017-07-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/12/2017-07-12/">href=&#34;xxx(this);&#34;和onclick=&#34;xxx(this);</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>对于href=”Javascript:xxx(this);”和onclick=”javascript:xxx(this);”之前一直以为这两种写法是等同的，今天后台一个同事在项目遇到这个问题中问我时才发现前者的this根本拿不到触发事件的A标签，而后者可以拿到。</p>
-<p>问题由来：</p>
-<p>她原来的写法是这样的：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">jsp页面:</span><br><span class="line">&lt;table&gt;</span><br><span class="line">&lt;td&gt;&lt;a href=<span class="string">"javascript:delete_cur(this)"</span>&gt;删除&lt;/a&gt;&lt;/td&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">javascript:</span><br><span class="line"><span class="keyword">function</span> delete_cur(arg)&#123;</span><br><span class="line">  console.log(arg) <span class="comment"># window</span></span><br><span class="line">  $(arg).parent().parent().remove()</span><br><span class="line">  <span class="comment">#....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2017/07/12/2017-07-12/#more">查看更多</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/12/2017-07-12/" data-id="cjye6dii30000afu043aohior" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/07/13/javascript中最重要的三点/" data-id="cjyfkg2q800031bu0bf4b7i3s" class="article-share-link">分享</a>
       
       
     </footer>
@@ -487,6 +491,11 @@
 
   
 
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+  </nav>
 
 </section>
         
@@ -521,6 +530,10 @@
           </li>
         
           <li>
+            <a href="/2019/07/20/flutter/">flutter初探</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/15/微信小程序踩坑/">微信小程序踩坑</a>
           </li>
         
@@ -530,10 +543,6 @@
         
           <li>
             <a href="/2019/04/08/js算法中reduce思想的应用/">js算法中reduce思想的应用</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/24/lvyou/">旅游</a>
           </li>
         
       </ul>

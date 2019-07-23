@@ -5,19 +5,18 @@
   
 
   
-  <title>旅游 | 秦强的博客</title>
+  <title>秦强的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2018.12 三亚">
-<meta property="og:type" content="article">
-<meta property="og:title" content="旅游">
-<meta property="og:url" content="http://yoursite.com/2018/12/24/lvyou/index.html">
+  <meta name="description" content="前端 博客 javascript">
+<meta property="og:type" content="website">
+<meta property="og:title" content="秦强的博客">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="秦强的博客">
-<meta property="og:description" content="2018.12 三亚">
+<meta property="og:description" content="前端 博客 javascript">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-23T02:08:21.998Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="旅游">
-<meta name="twitter:description" content="2018.12 三亚">
+<meta name="twitter:title" content="秦强的博客">
+<meta name="twitter:description" content="前端 博客 javascript">
   
   
     <link rel="icon" href="/favicon.png">
@@ -68,10 +67,12 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-lvyou" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-2017-07-12" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/12/24/lvyou/" class="article-date">
-  <time datetime="2018-12-23T16:12:56.000Z" itemprop="datePublished">2018-12-24</time>
+    <a href="/2017/07/12/2017-07-12/" class="article-date">
+  <time datetime="2017-07-12T12:53:22.000Z" itemprop="datePublished">2017-07-12</time>
 </a>
     
   </div>
@@ -81,8 +82,8 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      旅游
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/12/2017-07-12/">href=&#34;xxx(this);&#34;和onclick=&#34;xxx(this);</a>
     </h1>
   
 
@@ -90,39 +91,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>2018.12 三亚<br><a id="more"></a></p>
-<video width="100%" height="600" autoplay><br><source src="https://qinqiang.oss-cn-beijing.aliyuncs.com/%E6%89%8B%E6%9C%BAQQ%E8%A7%86%E9%A2%91_20190716111159.mp4"><br></video>
+        <p>对于href=”Javascript:xxx(this);”和onclick=”javascript:xxx(this);”之前一直以为这两种写法是等同的，今天后台一个同事在项目遇到这个问题中问我时才发现前者的this根本拿不到触发事件的A标签，而后者可以拿到。</p>
+<p>问题由来：</p>
+<p>她原来的写法是这样的：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">jsp页面:</span><br><span class="line">&lt;table&gt;</span><br><span class="line">&lt;td&gt;&lt;a href=<span class="string">"javascript:delete_cur(this)"</span>&gt;删除&lt;/a&gt;&lt;/td&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">javascript:</span><br><span class="line"><span class="keyword">function</span> delete_cur(arg)&#123;</span><br><span class="line">  console.log(arg) <span class="comment"># window</span></span><br><span class="line">  $(arg).parent().parent().remove()</span><br><span class="line">  <span class="comment">#....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/07/12/2017-07-12/#more">查看更多</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/24/lvyou/" data-id="cjyfkg2qd00071bu0a3xultju" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/07/12/2017-07-12/" data-id="cjyfkg2pn00001bu00kv99ep3" class="article-share-link">分享</a>
       
       
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2019/04/08/js算法中reduce思想的应用/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          js算法中reduce思想的应用
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/11/08/双11红包雨效果实现/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">双11红包雨效果实现</div>
-    </a>
-  
-</nav>
+</article>
+
 
   
-</article>
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 </section>
         
