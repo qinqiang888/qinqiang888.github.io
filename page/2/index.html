@@ -69,6 +69,86 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-vue" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/03/vue/" class="article-date">
+  <time datetime="2018-09-03T01:03:32.000Z" itemprop="datePublished">2018-09-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/03/vue/">vue源码阅读之编程思想</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一个月的源码阅读，真让人头大，但是收获更大，领悟到了很多vue设计的精华，先记录以下主线流程的设计思想</p>
+<h3 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h3><p>在源码目录在src/core/instance/index.js 中。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Vue</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp;</span><br><span class="line">    !(<span class="keyword">this</span> <span class="keyword">instanceof</span> Vue)</span><br><span class="line">  ) &#123;</span><br><span class="line">    warn(<span class="string">'Vue is a constructor and should be called with the `new` keyword'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>._init(options)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这段代码可以说明 Vue 只能通过 new 关键字去初始化，然后会调用this._init方法， 该方法在 src/core/instance/init.js 中定义。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype._init = <span class="function"><span class="keyword">function</span> (<span class="params">options?: Object</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> vm: Component = <span class="keyword">this</span></span><br><span class="line">  <span class="comment">// a uid</span></span><br><span class="line">  vm._uid = uid++</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> startTag, endTag</span><br><span class="line">  <span class="comment">/* istanbul ignore if */</span></span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp; config.performance &amp;&amp; mark) &#123;</span><br><span class="line">    startTag = <span class="string">`vue-perf-start:<span class="subst">$&#123;vm._uid&#125;</span>`</span></span><br><span class="line">    endTag = <span class="string">`vue-perf-end:<span class="subst">$&#123;vm._uid&#125;</span>`</span></span><br><span class="line">    mark(startTag)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// a flag to avoid this being observed</span></span><br><span class="line">  vm._isVue = <span class="literal">true</span></span><br><span class="line">  <span class="comment">// merge options</span></span><br><span class="line">  <span class="keyword">if</span> (options &amp;&amp; options._isComponent) &#123;</span><br><span class="line">    <span class="comment">// optimize internal component instantiation</span></span><br><span class="line">    <span class="comment">// since dynamic options merging is pretty slow, and none of the</span></span><br><span class="line">    <span class="comment">// internal component options needs special treatment.</span></span><br><span class="line">    initInternalComponent(vm, options)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    vm.$options = mergeOptions(</span><br><span class="line">      resolveConstructorOptions(vm.constructor),</span><br><span class="line">      options || &#123;&#125;,</span><br><span class="line">      vm</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/* istanbul ignore else */</span></span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span>) &#123;</span><br><span class="line">    initProxy(vm)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    vm._renderProxy = vm</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// expose real self</span></span><br><span class="line">  vm._self = vm</span><br><span class="line">  initLifecycle(vm)</span><br><span class="line">  initEvents(vm)</span><br><span class="line">  initRender(vm)</span><br><span class="line">  callHook(vm, <span class="string">'beforeCreate'</span>)</span><br><span class="line">  initInjections(vm) <span class="comment">// resolve injections before data/props</span></span><br><span class="line">  initState(vm)</span><br><span class="line">  initProvide(vm) <span class="comment">// resolve provide after data/props</span></span><br><span class="line">  callHook(vm, <span class="string">'created'</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* istanbul ignore if */</span></span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp; config.performance &amp;&amp; mark) &#123;</span><br><span class="line">    vm._name = formatComponentName(vm, <span class="literal">false</span>)</span><br><span class="line">    mark(endTag)</span><br><span class="line">    measure(<span class="string">`vue <span class="subst">$&#123;vm._name&#125;</span> init`</span>, startTag, endTag)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (vm.$options.el) &#123;</span><br><span class="line">    vm.$mount(vm.$options.el)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这段是vue初始化代码<br>Vue 初始化主要就干了几件事情，合并了配置，初始化生命周期，初始化事件，初始化渲染，初始化data、props、computed、watcher 等等。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Vue的初始化逻辑写的非常清楚，把不同的功能逻辑拆成一个个单独的函数执行，让主线逻辑一目了然，这样的编程思想真是非常值得借鉴和学习的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/03/vue/" data-id="cjyfz5ggh000cz51v44etvmr6" class="article-share-link">分享</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-prototype" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/02/prototype/" class="article-date">
+  <time datetime="2018-06-02T15:19:09.000Z" itemprop="datePublished">2018-06-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/02/prototype/">js原型继承</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="先说原型"><a href="#先说原型" class="headerlink" title="先说原型"></a>先说原型</h3> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name,color</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.color = color;</span><br><span class="line">  <span class="keyword">this</span>.type = <span class="string">"猫科动物"</span>;</span><br><span class="line">  <span class="keyword">this</span>.obj = &#123;<span class="attr">a</span>:&#123;<span class="attr">b</span>:<span class="number">1</span>&#125;&#125;</span><br><span class="line">  <span class="keyword">this</span>.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="string">"吃老鼠"</span>);&#125;;</span><br><span class="line">&#125;</span><br><span class="line">Cat.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'吃大老鼠'</span>)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> cat1 = <span class="keyword">new</span> Cat(<span class="string">"大毛"</span>,<span class="string">"黄色"</span>);</span><br><span class="line"><span class="keyword">var</span> cat2 = <span class="keyword">new</span> Cat (<span class="string">"二毛"</span>,<span class="string">"黑色"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(cat1.obj); <span class="comment">// 猫科动物</span></span><br><span class="line"><span class="built_in">console</span>.log(cat1.obj==cat2.obj)<span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(cat1.eat==cat2.eat)<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(cat1,cat2)</span><br><span class="line"><span class="built_in">console</span>.log(Cat.prototype.constructor)</span><br></pre></td></tr></table></figure>
+<h3 id="总结。为什么cat1-eat-cat2-eat-这就是传说中的new的时候做了什么。"><a href="#总结。为什么cat1-eat-cat2-eat-这就是传说中的new的时候做了什么。" class="headerlink" title="总结。为什么cat1.eat==cat2.eat  这就是传说中的new的时候做了什么。"></a>总结。为什么cat1.eat==cat2.eat  这就是传说中的new的时候做了什么。</h3><p>一个继承的实现方式<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extend</span>(<span class="params">Child, Parent</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">  F.prototype = Parent.prototype;</span><br><span class="line">  Child.prototype = <span class="keyword">new</span> F();</span><br><span class="line">  Child.prototype.constructor = Child;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>原型继承博大精深，感觉prototype的设计是js继承的基础。没有prototype，js将不能在浏览器运行。关于prototype内部实现原理，还需要继续探索。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/02/prototype/" data-id="cjyfz5ggf000az51v37dtmson" class="article-share-link">分享</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-clone" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/23/clone/" class="article-date">
@@ -107,7 +187,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/23/clone/" data-id="cjyfxbp4s0007ww1vw0a8xsfx" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/05/23/clone/" data-id="cjyfz5gg90002z51vs0l74c8h" class="article-share-link">分享</a>
       
       
     </footer>
@@ -148,7 +228,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/07/javascript中闭包的深入理解/" data-id="cjyfxbp4v000aww1v053doudz" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/04/07/javascript中闭包的深入理解/" data-id="cjyfz5ggd0007z51v5vjl3it9" class="article-share-link">分享</a>
       
       
     </footer>
@@ -189,7 +269,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/13/javascript中最重要的三点/" data-id="cjyfxbp4n0002ww1vfnpqygsa" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/07/13/javascript中最重要的三点/" data-id="cjyfz5gga0004z51vpn9zl7px" class="article-share-link">分享</a>
       
       
     </footer>
@@ -232,7 +312,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/12/2017-07-12/" data-id="cjyfxbp4h0000ww1vchhqa8y7" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/07/12/2017-07-12/" data-id="cjyfz5gg30000z51vsjl8dqak" class="article-share-link">分享</a>
       
       
     </footer>
@@ -265,7 +345,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul>
     </div>
   </div>
 

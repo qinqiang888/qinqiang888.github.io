@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>前端预加载实现的几种方式 | 秦强的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="javascript123456789101112131415161718192021222324function preloader() &amp;#123;  if (document.images) &amp;#123;  var img1 = new Image();  var img2 = new Image();  var img3 = new Image();  img1.src = &quot;http:/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端预加载实现的几种方式">
+<meta property="og:url" content="http://yoursite.com/2018/10/22/lazyload/index.html">
+<meta property="og:site_name" content="秦强的博客">
+<meta property="og:description" content="javascript123456789101112131415161718192021222324function preloader() &amp;#123;  if (document.images) &amp;#123;  var img1 = new Image();  var img2 = new Image();  var img3 = new Image();  img1.src = &quot;http:/">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-23T15:03:13.991Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端预加载实现的几种方式">
+<meta name="twitter:description" content="javascript123456789101112131415161718192021222324function preloader() &amp;#123;  if (document.images) &amp;#123;  var img1 = new Image();  var img2 = new Image();  var img3 = new Image();  img1.src = &quot;http:/">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">秦强的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">尘世迷途一小前端</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">文章</a>
+        
+          <a class="main-nav-link" href="/mood">心情</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <!-- <a id="nav-search-btn" class="nav-icon" title="搜索"></a> -->
+      </nav>
+      <div id="search-form-wrap">
+        <!-- <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form> -->
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-lazyload" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/22/lazyload/" class="article-date">
+  <time datetime="2018-10-22T14:40:39.000Z" itemprop="datePublished">2018-10-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端预加载实现的几种方式
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="javascript"><a href="#javascript" class="headerlink" title="javascript"></a>javascript</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">preloader</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.images) &#123;  </span><br><span class="line"><span class="keyword">var</span> img1 = <span class="keyword">new</span> Image();  </span><br><span class="line"><span class="keyword">var</span> img2 = <span class="keyword">new</span> Image();  </span><br><span class="line"><span class="keyword">var</span> img3 = <span class="keyword">new</span> Image();  </span><br><span class="line">img1.src = <span class="string">"http://domain.tld/path/to/image-001.gif"</span>;  </span><br><span class="line">img2.src = <span class="string">"http://domain.tld/path/to/image-002.gif"</span>;  </span><br><span class="line">img3.src = <span class="string">"http://domain.tld/path/to/image-003.gif"</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addLoadEvent</span>(<span class="params">func</span>) </span>&#123;  </span><br><span class="line"><span class="keyword">var</span> oldonload = <span class="built_in">window</span>.onload;  </span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span>.onload != <span class="string">'function'</span>) &#123;  </span><br><span class="line"><span class="built_in">window</span>.onload = func;  </span><br><span class="line">&#125; <span class="keyword">else</span> &#123;  </span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">if</span> (oldonload) &#123;  </span><br><span class="line">        oldonload();  </span><br><span class="line">    &#125;  </span><br><span class="line">    func();  </span><br><span class="line">&#125;  </span><br><span class="line">&#125;  </span><br><span class="line">&#125;  </span><br><span class="line">addLoadEvent(preloader);</span><br></pre></td></tr></table></figure>
+<h3 id="ajax实现预加载"><a href="#ajax实现预加载" class="headerlink" title="ajax实现预加载"></a>ajax实现预加载</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line"><span class="comment">// XHR to request a JS and a CSS  </span></span><br><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();  </span><br><span class="line">xhr.open(<span class="string">'GET'</span>, <span class="string">'http://domain.tld/preload.js'</span>);  </span><br><span class="line">xhr.send(<span class="string">''</span>);  </span><br><span class="line">xhr = <span class="keyword">new</span> XMLHttpRequest();  </span><br><span class="line">xhr.open(<span class="string">'GET'</span>, <span class="string">'http://domain.tld/preload.css'</span>);  </span><br><span class="line">xhr.send(<span class="string">''</span>);  </span><br><span class="line"><span class="comment">// preload image  </span></span><br><span class="line"><span class="keyword">new</span> Image().src = <span class="string">"http://domain.tld/preload.png"</span>;  </span><br><span class="line">&#125;, <span class="number">1000</span>);  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="资源文件预加载"><a href="#资源文件预加载" class="headerlink" title="资源文件预加载"></a>资源文件预加载</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>];  </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> css = <span class="built_in">document</span>.createElement(<span class="string">'link'</span>);  </span><br><span class="line">css.type = <span class="string">"text/css"</span>;  </span><br><span class="line">css.rel  = <span class="string">"stylesheet"</span>;  </span><br><span class="line">css.href = <span class="string">"http://domain.tld/preload.css"</span>;  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> js  = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);  </span><br><span class="line">js.type = <span class="string">"text/javascript"</span>;  </span><br><span class="line">js.src  = <span class="string">"http://domain.tld/preload.js"</span>;  </span><br><span class="line"></span><br><span class="line">head.appendChild(css);  </span><br><span class="line">head.appendChild(js);  </span><br><span class="line"> </span><br><span class="line"><span class="keyword">new</span> Image().src = <span class="string">"http://domain.tld/preload.png"</span>;  </span><br><span class="line"></span><br><span class="line">&#125;, <span class="number">1000</span>);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/22/lazyload/" data-id="cjyfz5ggb0005z51vvro6w24q" class="article-share-link">分享</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/11/08/双11红包雨效果实现/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          双11红包雨效果实现
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/10/11/binarySearch/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">js二分查找</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/22/log4js/">node日志管理-log4js</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/20/flutter/">flutter初探</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/15/微信小程序踩坑/">微信小程序踩坑</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/20/关于Mock.js的正确使用/">关于Mock.js的正确使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/08/js算法中reduce思想的应用/">js算法中reduce思想的应用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 qinqiang<br>
+      github <a href="https://www.github.com/qinqiang888" target="_blank">访问GitHub</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">文章</a>
+  
+    <a href="/mood" class="mobile-nav-link">心情</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> -->
+<script typet="text/javascript" src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

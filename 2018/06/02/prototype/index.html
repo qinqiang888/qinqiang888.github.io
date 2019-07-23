@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>js原型继承 | 秦强的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="先说原型 1234567891011121314151617function Cat(name,color)&amp;#123;  this.name = name;  this.color = color;  this.type = &quot;猫科动物&quot;;  this.obj = &amp;#123;a:&amp;#123;b:1&amp;#125;&amp;#125;  this.eat = function()&amp;#123;console.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js原型继承">
+<meta property="og:url" content="http://yoursite.com/2018/06/02/prototype/index.html">
+<meta property="og:site_name" content="秦强的博客">
+<meta property="og:description" content="先说原型 1234567891011121314151617function Cat(name,color)&amp;#123;  this.name = name;  this.color = color;  this.type = &quot;猫科动物&quot;;  this.obj = &amp;#123;a:&amp;#123;b:1&amp;#125;&amp;#125;  this.eat = function()&amp;#123;console.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-23T15:28:54.913Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js原型继承">
+<meta name="twitter:description" content="先说原型 1234567891011121314151617function Cat(name,color)&amp;#123;  this.name = name;  this.color = color;  this.type = &quot;猫科动物&quot;;  this.obj = &amp;#123;a:&amp;#123;b:1&amp;#125;&amp;#125;  this.eat = function()&amp;#123;console.">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">秦强的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">尘世迷途一小前端</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">文章</a>
+        
+          <a class="main-nav-link" href="/mood">心情</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <!-- <a id="nav-search-btn" class="nav-icon" title="搜索"></a> -->
+      </nav>
+      <div id="search-form-wrap">
+        <!-- <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form> -->
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-prototype" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/02/prototype/" class="article-date">
+  <time datetime="2018-06-02T15:19:09.000Z" itemprop="datePublished">2018-06-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js原型继承
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="先说原型"><a href="#先说原型" class="headerlink" title="先说原型"></a>先说原型</h3> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name,color</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.color = color;</span><br><span class="line">  <span class="keyword">this</span>.type = <span class="string">"猫科动物"</span>;</span><br><span class="line">  <span class="keyword">this</span>.obj = &#123;<span class="attr">a</span>:&#123;<span class="attr">b</span>:<span class="number">1</span>&#125;&#125;</span><br><span class="line">  <span class="keyword">this</span>.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="string">"吃老鼠"</span>);&#125;;</span><br><span class="line">&#125;</span><br><span class="line">Cat.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'吃大老鼠'</span>)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> cat1 = <span class="keyword">new</span> Cat(<span class="string">"大毛"</span>,<span class="string">"黄色"</span>);</span><br><span class="line"><span class="keyword">var</span> cat2 = <span class="keyword">new</span> Cat (<span class="string">"二毛"</span>,<span class="string">"黑色"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(cat1.obj); <span class="comment">// 猫科动物</span></span><br><span class="line"><span class="built_in">console</span>.log(cat1.obj==cat2.obj)<span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(cat1.eat==cat2.eat)<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(cat1,cat2)</span><br><span class="line"><span class="built_in">console</span>.log(Cat.prototype.constructor)</span><br></pre></td></tr></table></figure>
+<h3 id="总结。为什么cat1-eat-cat2-eat-这就是传说中的new的时候做了什么。"><a href="#总结。为什么cat1-eat-cat2-eat-这就是传说中的new的时候做了什么。" class="headerlink" title="总结。为什么cat1.eat==cat2.eat  这就是传说中的new的时候做了什么。"></a>总结。为什么cat1.eat==cat2.eat  这就是传说中的new的时候做了什么。</h3><p>一个继承的实现方式<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extend</span>(<span class="params">Child, Parent</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">  F.prototype = Parent.prototype;</span><br><span class="line">  Child.prototype = <span class="keyword">new</span> F();</span><br><span class="line">  Child.prototype.constructor = Child;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>原型继承博大精深，感觉prototype的设计是js继承的基础。没有prototype，js将不能在浏览器运行。关于prototype内部实现原理，还需要继续探索。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/02/prototype/" data-id="cjyfz5ggf000az51v37dtmson" class="article-share-link">分享</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/09/03/vue/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          vue源码阅读之编程思想
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/05/23/clone/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">js对象深拷贝和浅拷贝</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/22/log4js/">node日志管理-log4js</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/20/flutter/">flutter初探</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/15/微信小程序踩坑/">微信小程序踩坑</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/20/关于Mock.js的正确使用/">关于Mock.js的正确使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/08/js算法中reduce思想的应用/">js算法中reduce思想的应用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 qinqiang<br>
+      github <a href="https://www.github.com/qinqiang888" target="_blank">访问GitHub</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">文章</a>
+  
+    <a href="/mood" class="mobile-nav-link">心情</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> -->
+<script typet="text/javascript" src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

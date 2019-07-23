@@ -100,7 +100,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/22/log4js/" data-id="cjyfxbp4p0004ww1vz8t2et5s" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2019/07/22/log4js/" data-id="cjyfz5ggc0006z51vm1z5uwo3" class="article-share-link">分享</a>
       
       
     </footer>
@@ -141,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/20/flutter/" data-id="cjyfxbp4l0001ww1vjhr0eemv" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2019/07/20/flutter/" data-id="cjyfz5gg80001z51v9wcia9f7" class="article-share-link">分享</a>
       
       
     </footer>
@@ -182,7 +182,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/15/微信小程序踩坑/" data-id="cjyfxbp4z000cww1vwsyrokfn" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2019/06/15/微信小程序踩坑/" data-id="cjyfz5ggj000dz51v9z3udrba" class="article-share-link">分享</a>
       
       
     </footer>
@@ -224,7 +224,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/20/关于Mock.js的正确使用/" data-id="cjyfxbp50000dww1vjh56w4bo" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2019/04/20/关于Mock.js的正确使用/" data-id="cjyfz5ggk000fz51v1cg3j2gd" class="article-share-link">分享</a>
       
       
     </footer>
@@ -265,7 +265,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/08/js算法中reduce思想的应用/" data-id="cjyfxbp4t0008ww1vp162m1hk" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2019/04/08/js算法中reduce思想的应用/" data-id="cjyfz5ggd0008z51vgy7ecte9" class="article-share-link">分享</a>
       
       
     </footer>
@@ -306,7 +306,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/24/lvyou/" data-id="cjyfxbp4q0005ww1vm9do8wtx" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/12/24/lvyou/" data-id="cjyfz5ggg000bz51vgx18fwsp" class="article-share-link">分享</a>
       
       
     </footer>
@@ -347,7 +347,45 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/08/双11红包雨效果实现/" data-id="cjyfxbp4x000bww1vp7oplfvq" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/11/08/双11红包雨效果实现/" data-id="cjyfz5ggj000ez51vz5i7wujp" class="article-share-link">分享</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-lazyload" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/22/lazyload/" class="article-date">
+  <time datetime="2018-10-22T14:40:39.000Z" itemprop="datePublished">2018-10-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/22/lazyload/">前端预加载实现的几种方式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="javascript"><a href="#javascript" class="headerlink" title="javascript"></a>javascript</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">preloader</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.images) &#123;  </span><br><span class="line"><span class="keyword">var</span> img1 = <span class="keyword">new</span> Image();  </span><br><span class="line"><span class="keyword">var</span> img2 = <span class="keyword">new</span> Image();  </span><br><span class="line"><span class="keyword">var</span> img3 = <span class="keyword">new</span> Image();  </span><br><span class="line">img1.src = <span class="string">"http://domain.tld/path/to/image-001.gif"</span>;  </span><br><span class="line">img2.src = <span class="string">"http://domain.tld/path/to/image-002.gif"</span>;  </span><br><span class="line">img3.src = <span class="string">"http://domain.tld/path/to/image-003.gif"</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addLoadEvent</span>(<span class="params">func</span>) </span>&#123;  </span><br><span class="line"><span class="keyword">var</span> oldonload = <span class="built_in">window</span>.onload;  </span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span>.onload != <span class="string">'function'</span>) &#123;  </span><br><span class="line"><span class="built_in">window</span>.onload = func;  </span><br><span class="line">&#125; <span class="keyword">else</span> &#123;  </span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">if</span> (oldonload) &#123;  </span><br><span class="line">        oldonload();  </span><br><span class="line">    &#125;  </span><br><span class="line">    func();  </span><br><span class="line">&#125;  </span><br><span class="line">&#125;  </span><br><span class="line">&#125;  </span><br><span class="line">addLoadEvent(preloader);</span><br></pre></td></tr></table></figure>
+<h3 id="ajax实现预加载"><a href="#ajax实现预加载" class="headerlink" title="ajax实现预加载"></a>ajax实现预加载</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line"><span class="comment">// XHR to request a JS and a CSS  </span></span><br><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();  </span><br><span class="line">xhr.open(<span class="string">'GET'</span>, <span class="string">'http://domain.tld/preload.js'</span>);  </span><br><span class="line">xhr.send(<span class="string">''</span>);  </span><br><span class="line">xhr = <span class="keyword">new</span> XMLHttpRequest();  </span><br><span class="line">xhr.open(<span class="string">'GET'</span>, <span class="string">'http://domain.tld/preload.css'</span>);  </span><br><span class="line">xhr.send(<span class="string">''</span>);  </span><br><span class="line"><span class="comment">// preload image  </span></span><br><span class="line"><span class="keyword">new</span> Image().src = <span class="string">"http://domain.tld/preload.png"</span>;  </span><br><span class="line">&#125;, <span class="number">1000</span>);  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="资源文件预加载"><a href="#资源文件预加载" class="headerlink" title="资源文件预加载"></a>资源文件预加载</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>];  </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> css = <span class="built_in">document</span>.createElement(<span class="string">'link'</span>);  </span><br><span class="line">css.type = <span class="string">"text/css"</span>;  </span><br><span class="line">css.rel  = <span class="string">"stylesheet"</span>;  </span><br><span class="line">css.href = <span class="string">"http://domain.tld/preload.css"</span>;  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> js  = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);  </span><br><span class="line">js.type = <span class="string">"text/javascript"</span>;  </span><br><span class="line">js.src  = <span class="string">"http://domain.tld/preload.js"</span>;  </span><br><span class="line"></span><br><span class="line">head.appendChild(css);  </span><br><span class="line">head.appendChild(js);  </span><br><span class="line"> </span><br><span class="line"><span class="keyword">new</span> Image().src = <span class="string">"http://domain.tld/preload.png"</span>;  </span><br><span class="line"></span><br><span class="line">&#125;, <span class="number">1000</span>);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/22/lazyload/" data-id="cjyfz5ggb0005z51vvro6w24q" class="article-share-link">分享</a>
       
       
     </footer>
@@ -384,7 +422,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/11/binarySearch/" data-id="cjyfxbp4o0003ww1v8n2b6aib" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/10/11/binarySearch/" data-id="cjyfz5gga0003z51vonq7c5zu" class="article-share-link">分享</a>
       
       
     </footer>
@@ -429,48 +467,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/20/tailCall/" data-id="cjyfxbp4r0006ww1v8bhtbcvl" class="article-share-link">分享</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-vue" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/03/vue/" class="article-date">
-  <time datetime="2018-09-03T01:03:32.000Z" itemprop="datePublished">2018-09-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/03/vue/">vue源码阅读之编程思想</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一个月的源码阅读，真让人头大，但是收获更大，领悟到了很多vue设计的精华，先记录以下主线流程的设计思想</p>
-<h3 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h3><p>在源码目录在src/core/instance/index.js 中。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Vue</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp;</span><br><span class="line">    !(<span class="keyword">this</span> <span class="keyword">instanceof</span> Vue)</span><br><span class="line">  ) &#123;</span><br><span class="line">    warn(<span class="string">'Vue is a constructor and should be called with the `new` keyword'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>._init(options)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这段代码可以说明 Vue 只能通过 new 关键字去初始化，然后会调用this._init方法， 该方法在 src/core/instance/init.js 中定义。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype._init = <span class="function"><span class="keyword">function</span> (<span class="params">options?: Object</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> vm: Component = <span class="keyword">this</span></span><br><span class="line">  <span class="comment">// a uid</span></span><br><span class="line">  vm._uid = uid++</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> startTag, endTag</span><br><span class="line">  <span class="comment">/* istanbul ignore if */</span></span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp; config.performance &amp;&amp; mark) &#123;</span><br><span class="line">    startTag = <span class="string">`vue-perf-start:<span class="subst">$&#123;vm._uid&#125;</span>`</span></span><br><span class="line">    endTag = <span class="string">`vue-perf-end:<span class="subst">$&#123;vm._uid&#125;</span>`</span></span><br><span class="line">    mark(startTag)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// a flag to avoid this being observed</span></span><br><span class="line">  vm._isVue = <span class="literal">true</span></span><br><span class="line">  <span class="comment">// merge options</span></span><br><span class="line">  <span class="keyword">if</span> (options &amp;&amp; options._isComponent) &#123;</span><br><span class="line">    <span class="comment">// optimize internal component instantiation</span></span><br><span class="line">    <span class="comment">// since dynamic options merging is pretty slow, and none of the</span></span><br><span class="line">    <span class="comment">// internal component options needs special treatment.</span></span><br><span class="line">    initInternalComponent(vm, options)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    vm.$options = mergeOptions(</span><br><span class="line">      resolveConstructorOptions(vm.constructor),</span><br><span class="line">      options || &#123;&#125;,</span><br><span class="line">      vm</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/* istanbul ignore else */</span></span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span>) &#123;</span><br><span class="line">    initProxy(vm)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    vm._renderProxy = vm</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// expose real self</span></span><br><span class="line">  vm._self = vm</span><br><span class="line">  initLifecycle(vm)</span><br><span class="line">  initEvents(vm)</span><br><span class="line">  initRender(vm)</span><br><span class="line">  callHook(vm, <span class="string">'beforeCreate'</span>)</span><br><span class="line">  initInjections(vm) <span class="comment">// resolve injections before data/props</span></span><br><span class="line">  initState(vm)</span><br><span class="line">  initProvide(vm) <span class="comment">// resolve provide after data/props</span></span><br><span class="line">  callHook(vm, <span class="string">'created'</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* istanbul ignore if */</span></span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp; config.performance &amp;&amp; mark) &#123;</span><br><span class="line">    vm._name = formatComponentName(vm, <span class="literal">false</span>)</span><br><span class="line">    mark(endTag)</span><br><span class="line">    measure(<span class="string">`vue <span class="subst">$&#123;vm._name&#125;</span> init`</span>, startTag, endTag)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (vm.$options.el) &#123;</span><br><span class="line">    vm.$mount(vm.$options.el)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这段是vue初始化代码<br>Vue 初始化主要就干了几件事情，合并了配置，初始化生命周期，初始化事件，初始化渲染，初始化data、props、computed、watcher 等等。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Vue的初始化逻辑写的非常清楚，把不同的功能逻辑拆成一个个单独的函数执行，让主线逻辑一目了然，这样的编程思想真是非常值得借鉴和学习的。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/03/vue/" data-id="cjyfxbp4u0009ww1v41gqqlwn" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/09/20/tailCall/" data-id="cjyfz5gge0009z51v2achwnb8" class="article-share-link">分享</a>
       
       
     </footer>
@@ -503,7 +500,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul>
     </div>
   </div>
 
