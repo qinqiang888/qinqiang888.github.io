@@ -100,7 +100,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/03/vue/" data-id="cjyfz7rc4000b0m1v8lezxmih" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/09/03/vue/" data-id="cjyfzbl0j000c1r1vyjg4idol" class="article-share-link">分享</a>
       
       
     </footer>
@@ -141,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/02/prototype/" data-id="cjyfz7rc2000a0m1vwjtk9gov" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/06/02/prototype/" data-id="cjyfzbl0f000a1r1velu8mpir" class="article-share-link">分享</a>
       
       
     </footer>
@@ -179,8 +179,7 @@
 <h3 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> obj=&#123;<span class="attr">name</span>:<span class="string">'张三'</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> newObj=&#123;&#125;;</span><br><span class="line">newObj.name=<span class="string">'李四'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj)<span class="comment">//张三 newObj改变，obj不变。因为newObj重新创建了一块堆内存，跟obj互不影响。这就是深拷贝</span></span><br></pre></td></tr></table></figure>
 <p>当然这只是最简单的深拷贝,如果obj属性的值又是一个对象呢。<br>比如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=&#123;<span class="attr">name</span>:&#123;<span class="attr">chinaName</span>:<span class="string">'张三'</span>,<span class="attr">EnglishName</span>:<span class="string">'zhangsan'</span>&#125;&#125;</span><br><span class="line"><span class="keyword">var</span> newObj=&#123;&#125;;</span><br><span class="line">newObj.name=obj.name</span><br><span class="line">newObj.name.chinaName=<span class="string">'李四'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj)<span class="comment">//&#123;name: &#123;chinaName: "李四", EnglishName: "zhangsan"&#125;&#125;</span></span><br></pre></td></tr></table></figure></p>
 <p>这个时候obj又受到影响。因为obj的属性又是一个对象。我们只是外层创建了新的对象newobj={};但是里面的name对象还是直接赋值newObj.name=obj.name<br>因此我们需要再次创建一个新对象（开辟一块新的堆内存），然后把name这个对象里的赋值进去不就行了吗？进行改进一下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=&#123;<span class="attr">name</span>:&#123;<span class="attr">chinaName</span>:<span class="string">'张三'</span>,<span class="attr">EnglishName</span>:<span class="string">'zhangsan'</span>&#125;&#125;</span><br><span class="line"><span class="keyword">var</span> newObj=&#123;&#125;;</span><br><span class="line">newObj.name=&#123;&#125;</span><br><span class="line">newObj.name.chinaName=<span class="string">'张三'</span></span><br><span class="line">newObj.name.EnglishName=<span class="string">'zhangsan'</span></span><br><span class="line"><span class="built_in">console</span>.log(newObj)<span class="comment">//&#123;name: &#123;chinaName: "张三", EnglishName: "zhangsan"&#125;&#125;</span></span><br></pre></td></tr></table></figure></p>
-<pre><code>改变一下name对象属性
-</code></pre>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">newObj.name.chinaName=<span class="string">'李四'</span></span><br><span class="line"><span class="built_in">console</span>.log(obj)<span class="comment">//&#123;name: &#123;chinaName: "张三", EnglishName: "zhangsan"&#125;&#125;  好了，obj不受影响了。</span></span><br></pre></td></tr></table></figure>
+<p>改变一下name对象属性<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">newObj.name.chinaName=<span class="string">'李四'</span></span><br><span class="line"><span class="built_in">console</span>.log(obj)<span class="comment">//&#123;name: &#123;chinaName: "张三", EnglishName: "zhangsan"&#125;&#125;  好了，obj不受影响了。</span></span><br></pre></td></tr></table></figure></p>
 <p>但是如果里面有很多层属性,并且属性的值都是对象呢？我们就这样写下去肯定不行啊<br>于是我们想起来,递归函数 只要调用自身就可以处理一些相同的逻辑.</p>
 <p>那实现一个深拷贝也就不难了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span> (<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span>(obj) !== <span class="string">'object'</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> newObj = obj <span class="keyword">instanceof</span> <span class="built_in">Array</span> ? [] :&#123;&#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> obj)&#123;</span><br><span class="line">    <span class="keyword">if</span>(obj[i] &amp;&amp; <span class="keyword">typeof</span>(obj[i]) === <span class="string">'object'</span>)&#123;</span><br><span class="line">      newObj[i] = deepClone(obj[i])</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      newObj[i] = obj[i]</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>验证一下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=deepClone(obj)</span><br><span class="line"><span class="built_in">console</span>.log(a,<span class="number">111</span>)</span><br><span class="line">a.name.EnglishName=<span class="string">'lisi'</span></span><br><span class="line"><span class="built_in">console</span>.log(obj)<span class="comment">//&#123;name: &#123;chinaName: "张三", EnglishName: "zhangsan"&#125;&#125; ,不受影响，没毛病</span></span><br></pre></td></tr></table></figure></p>
@@ -189,7 +188,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/23/clone/" data-id="cjyfz7rbr00000m1v7jrs3a66" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/05/23/clone/" data-id="cjyfzbl0900041r1v8agnejzu" class="article-share-link">分享</a>
       
       
     </footer>
@@ -230,7 +229,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/07/javascript中闭包的深入理解/" data-id="cjyfz7rbz00060m1vxchlmyn8" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/04/07/javascript中闭包的深入理解/" data-id="cjyfzbl0b00061r1vr4mbb8on" class="article-share-link">分享</a>
       
       
     </footer>
@@ -271,7 +270,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/13/javascript中最重要的三点/" data-id="cjyfz7rby00040m1vd5gf34qr" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/07/13/javascript中最重要的三点/" data-id="cjyfzbl0600011r1vyy664xgn" class="article-share-link">分享</a>
       
       
     </footer>
@@ -314,7 +313,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/12/2017-07-12/" data-id="cjyfz7rbw00020m1vhf96c8iz" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/07/12/2017-07-12/" data-id="cjyfzbl0800031r1vuwg5k25v" class="article-share-link">分享</a>
       
       
     </footer>
